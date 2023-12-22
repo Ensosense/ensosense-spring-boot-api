@@ -1,23 +1,38 @@
 package se.artshop.ensosensespringbootapi.Artworks;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.google.cloud.firestore.annotation.DocumentId;
-import com.google.cloud.spring.data.firestore.Document;
+
+import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import lombok.Data;
 
 
-
-@Document(collectionName = "artworks")
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@Entity
+@Table(name = "artwork")
 @Data
 public class Artwork {
 
-  @DocumentId
-  private String id;
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
+  private long id;
+
+  @Column(name = "title")
   private String title;
+
+  @Column(name = "description")
   private String description;
+
+  @Column(name = "category")
   private String category;
+
+  @Column(name = "price")
   private int price;
+
+  @Column(name = "available")
   private boolean available;
+
+  @Column(name = "img")
   private String img;
 
 }

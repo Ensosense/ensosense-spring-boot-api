@@ -1,12 +1,5 @@
 package se.artshop.ensosensespringbootapi;
 
-import com.google.auth.oauth2.GoogleCredentials;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.FirebaseOptions;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import javax.annotation.PostConstruct;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -17,7 +10,7 @@ public class EnsosenseSpringBootApiApplication {
 		SpringApplication.run(EnsosenseSpringBootApiApplication.class, args);
 	}
 
-	@PostConstruct
+	/*@PostConstruct
 	public void initialize() {
 
 		FileInputStream serviceAccount =
@@ -39,6 +32,6 @@ public class EnsosenseSpringBootApiApplication {
 
 		FirebaseApp.initializeApp(options);
 
-	}
+	}*/
 
 }
