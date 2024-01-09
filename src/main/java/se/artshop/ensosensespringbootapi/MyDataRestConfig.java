@@ -6,6 +6,7 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import se.artshop.ensosensespringbootapi.Artworks.Artwork;
+import se.artshop.ensosensespringbootapi.Reviews.Review;
 
 @Configuration
 public class MyDataRestConfig implements RepositoryRestConfigurer {
@@ -22,11 +23,11 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         HttpMethod.PUT};
 
     config.exposeIdsFor(Artwork.class);
-//    config.exposeIdsFor(Review.class);
+    config.exposeIdsFor(Review.class);
 //    config.exposeIdsFor(Message.class);
 
     disableHttpMethods(Artwork.class, config, theUnsupportedActions);
-//    disableHttpMethods(Review.class, config, theUnsupportedActions);
+    disableHttpMethods(Review.class, config, theUnsupportedActions);
 //    disableHttpMethods(Message.class, config, theUnsupportedActions);
 
     /* Configure CORS Mapping */
