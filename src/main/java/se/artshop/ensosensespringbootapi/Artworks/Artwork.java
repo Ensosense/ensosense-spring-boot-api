@@ -30,7 +30,7 @@ public class Artwork {
   private int price;
 
   @Column(name = "available")
-  private boolean available;
+  private int copiesAvailable;
 
   @Column(name = "img")
   private String img;
