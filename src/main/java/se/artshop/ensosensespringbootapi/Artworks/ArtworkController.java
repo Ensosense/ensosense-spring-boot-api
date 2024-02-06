@@ -2,9 +2,11 @@ package se.artshop.ensosensespringbootapi.Artworks;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import se.artshop.ensosensespringbootapi.utils.ExtractJWT;
 
 
 @CrossOrigin("http://localhost:3000")
@@ -19,8 +21,9 @@ public class ArtworkController {
   }
 
   @PutMapping("/secure/checkout")
-  public Artwork checkoutArtwork(@RequestParam Long artworkId) throws Exception {
-    String userEmail = "userEmail@email.com";
+  public Artwork checkoutArtwork(@RequestHeader(value = "Authorization") String token,
+      @RequestParam Long artworkId) throws Exception {
+    String userEmail = ExtractJWT.payLoadExtraction(token, "\"sub\"");
 
     return artworkService.checkoutArtwork(userEmail, artworkId);
   }
