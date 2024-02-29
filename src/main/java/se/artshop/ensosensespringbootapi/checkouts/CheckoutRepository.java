@@ -1,4 +1,4 @@
-package se.artshop.ensosensespringbootapi.Checkouts;
+package se.artshop.ensosensespringbootapi.checkouts;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;

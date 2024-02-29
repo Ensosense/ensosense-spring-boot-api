@@ -1,6 +1,5 @@
-package se.artshop.ensosensespringbootapi.Reviews;
+package se.artshop.ensosensespringbootapi.checkouts;
 
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,31 +7,32 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Data;
-import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
-@Table(name = "review")
+@Table(name = "checkout")
 @Data
-public class Review {
+public class Checkout {
 
+  public  Checkout(){}
+
+  public Checkout(String userEmail, String checkoutDate, Long artworkId){
+    this.userEmail = userEmail;
+    this.checkoutDate = checkoutDate;
+    this.artworkId = artworkId;
+  }
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
   private Long id;
 
+
   @Column(name = "user_email")
   private String userEmail;
 
-  @Column(name = "date")
-  @CreationTimestamp
-  private Date date;
 
-  @Column(name = "rating")
-  private double rating;
+  @Column(name = "checkout_date")
+  private String checkoutDate;
 
   @Column(name = "artwork_id")
   private Long artworkId;
-
-  @Column(name = "review_description")
-  private String reviewDescription;
 }

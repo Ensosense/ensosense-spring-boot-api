@@ -1,4 +1,4 @@
-package se.artshop.ensosensespringbootapi.Reviews;
+package se.artshop.ensosensespringbootapi.reviews;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Page;
@@ -8,4 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface ReviewRepository extends JpaRepository<Review, Long> {
 
   Page<Review> findByArtworkId(@RequestParam("artwork_id") Long artworkId, Pageable pageable);
+
+  Review findByUserEmailAndArtworkId(String userEmail, Long artworkId);
 }

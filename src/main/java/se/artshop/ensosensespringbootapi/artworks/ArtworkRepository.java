@@ -1,4 +1,4 @@
-package se.artshop.ensosensespringbootapi.Artworks;
+package se.artshop.ensosensespringbootapi.artworks;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

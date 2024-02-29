@@ -5,8 +5,8 @@ import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import se.artshop.ensosensespringbootapi.Artworks.Artwork;
-import se.artshop.ensosensespringbootapi.Reviews.Review;
+import se.artshop.ensosensespringbootapi.artworks.Artwork;
+import se.artshop.ensosensespringbootapi.reviews.Review;
 
 @Configuration
 public class MyDataRestConfig implements RepositoryRestConfigurer {

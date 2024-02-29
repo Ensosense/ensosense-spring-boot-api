@@ -1,4 +1,4 @@
-package se.artshop.ensosensespringbootapi.Artworks;
+package se.artshop.ensosensespringbootapi.artworks;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PutMapping;

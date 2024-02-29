@@ -1,4 +1,4 @@
-package se.artshop.ensosensespringbootapi.Artworks;
+package se.artshop.ensosensespringbootapi.artworks;
 
 import javax.persistence.*;
 import javax.persistence.Entity;

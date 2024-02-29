@@ -1,13 +1,11 @@
-package se.artshop.ensosensespringbootapi.Artworks;
+package se.artshop.ensosensespringbootapi.artworks;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Optional;
 import javax.transaction.Transactional;
-import org.hibernate.annotations.Check;
 import org.springframework.stereotype.Service;
-import se.artshop.ensosensespringbootapi.Checkouts.Checkout;
-import se.artshop.ensosensespringbootapi.Checkouts.CheckoutRepository;
+import se.artshop.ensosensespringbootapi.checkouts.Checkout;
+import se.artshop.ensosensespringbootapi.checkouts.CheckoutRepository;
 
 @Transactional
 @Service
@@ -28,10 +26,10 @@ public class ArtworkService {
   public Artwork checkoutArtwork(String userEmail, Long artworkId) throws Exception{
 
     Optional<Artwork> artwork = artworkRepository.findById(artworkId);
-    Checkout validateCheckout = checkoutRepository.findByUserEmailAndArtworkId(userEmail, artworkId);
+  //  Checkout validateCheckout = checkoutRepository.findByUserEmailAndArtworkId(userEmail, artworkId);
 
-    if(!artwork.isPresent() || validateCheckout != null || artwork.get().getCopiesAvailable() <= 0){
-      throw new Exception("Artwork doesn't exist or checked out by user");
+    if(!artwork.isPresent() || artwork.get().getCopiesAvailable() <= 0){
+      throw new Exception("Artwork doesn't exist");
     }
 
     artwork.get().setCopiesAvailable(artwork.get().getCopiesAvailable() - 1);
