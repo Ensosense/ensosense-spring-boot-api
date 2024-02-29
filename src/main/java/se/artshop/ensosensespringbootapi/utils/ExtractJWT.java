@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class ExtractJWT {
 
-  public static  String payLoadExtraction(String token, String extraction) {
+  public static  String payLoadJWTExtraction(String token, String extraction) {
 
     token.replace("Bearer ", "");
 

@@ -16,7 +16,7 @@ public class SecurityConfiguration {
     // disable Cross Site Request Forgery
     http.csrf().disable();
 
-    http.authorizeRequests(configure -> configure.antMatchers("/api/artworks/secure/**")
+    http.authorizeRequests(configure -> configure.antMatchers("/api/artworks/secure/**", "/api/reviews/secure/**")
         .authenticated())
         .oauth2ResourceServer()
         .jwt();

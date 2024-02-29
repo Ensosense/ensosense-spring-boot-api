@@ -23,7 +23,10 @@ public class ArtworkController {
   @PutMapping("/secure/checkout")
   public Artwork checkoutArtwork(@RequestHeader(value = "Authorization") String token,
       @RequestParam Long artworkId) throws Exception {
-    String userEmail = ExtractJWT.payLoadExtraction(token, "\"sub\"");
+    String userEmail = ExtractJWT.payLoadJWTExtraction(token, "\"sub\"");
+    if(userEmail == null){
+      throw new Exception("User email is missing");
+    }
 
     return artworkService.checkoutArtwork(userEmail, artworkId);
   }

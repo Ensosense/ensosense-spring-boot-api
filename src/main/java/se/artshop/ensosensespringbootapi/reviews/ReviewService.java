@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import se.artshop.ensosensespringbootapi.artworks.ArtworkRepository;
 import se.artshop.ensosensespringbootapi.requestmodels.ReviewRequest;
 
 @Service
@@ -14,12 +13,10 @@ import se.artshop.ensosensespringbootapi.requestmodels.ReviewRequest;
 public class ReviewService {
 
   private ReviewRepository reviewRepository;
-  private ArtworkRepository artworkRepository;
 
   @Autowired
-  public ReviewService(ReviewRepository reviewRepository, ArtworkRepository artworkRepository) {
+  public ReviewService(ReviewRepository reviewRepository) {
     this.reviewRepository = reviewRepository;
-    this.artworkRepository = artworkRepository;
   }
 
   public void postReview(String userEmail, ReviewRequest reviewRequest) throws Exception {
@@ -30,7 +27,7 @@ public class ReviewService {
     }
     Review review = new Review();
     review.setArtworkId(reviewRequest.getArtworkId());
-    review.setRating(review.getRating());
+    review.setRating(reviewRequest.getRating());
     review.setUserEmail(userEmail);
 
     if (reviewRequest.getReviewDescription().isPresent()) {
@@ -39,5 +36,15 @@ public class ReviewService {
     }
     review.setDate(Date.valueOf(LocalDate.now()));
     reviewRepository.save(review);
+  }
+
+  public boolean userReviewListed(String userEmail, Long artworkId) {
+    Review validateReview = reviewRepository.findByUserEmailAndArtworkId(userEmail, artworkId);
+
+    if (validateReview != null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
